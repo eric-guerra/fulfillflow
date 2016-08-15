@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/fulfillflow?serverTimezone=UTC}
+    username: ${DB_USER:fulfillflow}
+    password: ${DB_PASSWORD:fulfillflow}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.type.preferred_instant_jdbc_type: TIMESTAMP
+  batch:
+    job:
+      enabled: false          # jobs run on schedule or via the API, not at startup
+    jdbc:
+      initialize-schema: always
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+
+fulfillflow:
+  wave:
+    max-shipments: 40
+    max-units: 200
+    cron: "0 */15 6-20 * * *"
