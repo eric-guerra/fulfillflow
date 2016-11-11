@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:fulfillflow;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.type.preferred_instant_jdbc_type: TIMESTAMP
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+fulfillflow:
+  wave:
+    schedule-enabled: false
